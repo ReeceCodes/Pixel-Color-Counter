@@ -13,6 +13,8 @@
             @Html.CheckBoxFor(m => m.Simplify)
             <br />
             <label>Color Similarity Threshold: <input type="number" min="0" max="255" step="1" placeholder="0" value="@Model.Threshold" name="Threshold" /></label>
+            <br/>
+            <label>Color Similarity Threshold Max: <input type="number" min="50" max="255" step="1" placeholder="50" value="@(Model.SecondThreshold < 50 ? 50 : Model.SecondThreshold)" name="SecondThreshold" /></label>
             <br />
             <button class="btn btn-primary">Submit</button>
         </div>

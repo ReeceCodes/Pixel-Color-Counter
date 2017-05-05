@@ -17,6 +17,7 @@ namespace Pixel_Color_Counter.Models
         public bool Simplify { get; set; }
         
         public int Threshold { get; set; }
+        public int SecondThreshold { get; set; }
 
         public ImageModel() { }
 
@@ -100,7 +101,7 @@ namespace Pixel_Color_Counter.Models
                         //eg 0,100, 200 vs 21, 100,200 - failed above check because just one value was out of range
                         //50 chosen arbitrarily because i can barely tell 0,0,150 from 0,0,100 and the palette of colors i need in the end is as simple as possible
                         //still won't catch some but good enough to reduce a bit more
-                        if (Math.Abs(red - cred) < 50)
+                        if (Math.Abs(red - cred) < SecondThreshold && Math.Abs(red - cred) > Threshold)
                         {
                             if ((green - Threshold <= cgreen && green + Threshold >= cgreen) && (blue - Threshold <= cblue && blue + Threshold >= cblue))
                             {
@@ -109,7 +110,7 @@ namespace Pixel_Color_Counter.Models
                                 break;
                             }
                         }
-                        else if (Math.Abs(green - cgreen) < 50)
+                        else if (Math.Abs(green - cgreen) < SecondThreshold && Math.Abs(green - cgreen) > Threshold)
                         {
                             if ((red - Threshold <= cred && red + Threshold >= cred) && (blue - Threshold <= cblue && blue + Threshold >= cblue))
                             {
@@ -118,7 +119,7 @@ namespace Pixel_Color_Counter.Models
                                 break;
                             }
                         }
-                        else if (Math.Abs(blue - cblue) < 50)
+                        else if (Math.Abs(blue - cblue) < SecondThreshold && Math.Abs(blue - cblue) > Threshold)
                         {
                             if ((red - Threshold <= cred && red + Threshold >= cred) && (green - Threshold <= cgreen && green + Threshold >= cgreen))
                             {

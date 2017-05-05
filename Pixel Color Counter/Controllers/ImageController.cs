@@ -56,6 +56,7 @@ namespace Pixel_Color_Counter.Controllers
                 ImageModel im = new ImageModel();
                 im.Simplify = m.Simplify;
                 im.Threshold = (m.Threshold > 255) ? 255 : m.Threshold;
+                im.SecondThreshold = (m.SecondThreshold > 255) ? 255: (m.SecondThreshold < 50) ? 50 : m.SecondThreshold;
 
                 im.ProcessImage(fuImg);
 

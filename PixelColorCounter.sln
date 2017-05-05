@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pixel Color Counter", "Pixel Color Counter\Pixel Color Counter.csproj", "{5F1BB176-74BF-43B2-9419-1A2C63216DD2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PixelColorCounter", "Pixel Color Counter\PixelColorCounter.csproj", "{5F1BB176-74BF-43B2-9419-1A2C63216DD2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

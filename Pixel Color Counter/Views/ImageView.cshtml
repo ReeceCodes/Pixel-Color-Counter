@@ -1,0 +1,28 @@
+﻿@using Pixel_Color_Counter.Controllers
+@model Pixel_Color_Counter.Models.ImageModel
+
+@Html.ValidationSummary()
+
+@using (Html.BeginUmbracoForm("SubmitImage","Image"))
+{
+    <div class="row">
+        <div class="col-sm-12">
+            <input type="file" id="fuIMG" name="fuIMG" accept=".bmp, .png, .jpg, .jpeg, .gif" />
+            <br/>
+            <button class="btn btn-primary" >Submit</button>
+        </div>
+    </div>
+    <hr class="showhr" />
+
+    if (Model.currColors != null)
+    {
+    <div class="row">
+        <div class="col-sm-12">
+            @foreach (string k in Model.currColors.Keys)
+            {
+                <p><span>Color : </span><span style="background-color: rgba(@k,1)">&nbsp;&nbsp;&nbsp;</span><span style="background-color: white;">Occurances: @Model.currColors[k]</span></p>
+            }
+        </div>
+    </div>
+        }
+    }

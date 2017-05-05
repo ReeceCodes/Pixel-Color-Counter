@@ -3,26 +3,42 @@
 
 @Html.ValidationSummary()
 
-@using (Html.BeginUmbracoForm("SubmitImage","Image"))
+@using (Html.BeginUmbracoForm("SubmitImage", "Image"))
 {
     <div class="row">
         <div class="col-sm-12">
             <input type="file" id="fuIMG" name="fuIMG" accept=".bmp, .png, .jpg, .jpeg, .gif" />
-            <br/>
-            <button class="btn btn-primary" >Submit</button>
+            <br />
+            @Html.LabelFor(m => m.Simplify, "Combine similar colors")
+            @Html.CheckBoxFor(m => m.Simplify)
+            <br />
+            <label>Color Similarity Threshold: <input type="number" min="0" max="255" step="1" placeholder="0" value="@Model.Threshold" name="Threshold" /></label>
+            <br />
+            <button class="btn btn-primary">Submit</button>
         </div>
     </div>
     <hr class="showhr" />
 
-    if (Model.currColors != null)
-    {
+
     <div class="row">
-        <div class="col-sm-12">
-            @foreach (string k in Model.currColors.Keys)
+        <div class="col-sm-6">
+            <p>Colors Unsorted</p>
+            @if (Model.currColors != null)
+            {   foreach (string k in Model.currColors.Keys)
             {
                 <p><span>Color : </span><span style="background-color: rgba(@k,1)">&nbsp;&nbsp;&nbsp;</span><span style="background-color: white;">Occurances: @Model.currColors[k]</span></p>
             }
+            }
+        </div>
+        <div>
+            <p>Colors Sorted</p>
+            @if (Model.dict != null)
+            {   foreach (string k in Model.dict.Keys)
+            {
+                <p><span>Color : </span><span style="background-color: rgba(@k,1)">&nbsp;&nbsp;&nbsp;</span><span style="background-color: white;">Occurances: @Model.dict[k]</span></p>
+            }
+            }
         </div>
     </div>
-        }
-    }
+
+}

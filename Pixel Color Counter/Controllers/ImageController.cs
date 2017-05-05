@@ -20,7 +20,7 @@ namespace Pixel_Color_Counter.Controllers
         }
 
         [NotChildAction]
-        public ActionResult SubmitImage()
+        public ActionResult SubmitImage(ImageModel m)
         {
             //validate image is a bitmap
             //can't control the file size but if it's more than say...100k pixels then kick back
@@ -40,9 +40,7 @@ namespace Pixel_Color_Counter.Controllers
                 {
                     ModelState.AddModelError("TooMuch", "The image had too many pixels. 1 million tops.");
                 }
-
-
-
+                
             }
             else
             {
@@ -56,6 +54,8 @@ namespace Pixel_Color_Counter.Controllers
                 HttpPostedFileBase fuImg = Request.Files[0];
 
                 ImageModel im = new ImageModel();
+                im.Simplify = m.Simplify;
+                im.Threshold = (m.Threshold > 255) ? 255 : m.Threshold;
 
                 im.ProcessImage(fuImg);
 
